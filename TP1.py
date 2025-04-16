@@ -38,3 +38,17 @@ Grafico = px.scatter_geo(
 )
 
 Grafico.show()
+
+#segundo grafico
+import plotly.graph_objects as go
+Grafico = go.Figure(go.Densitymap(
+    lat=tabla_terremotos["latitud"], 
+    lon=tabla_terremotos["longitud"],
+    z=tabla_terremotos["magnitud"], #para que te diga la magnitud
+    radius=20 #tamaño de los puntos
+))
+Grafico.update_layout(map_style="open-street-map",) #el mapa que voy a usar
+Grafico.update_layout(margin={"r":50,"t":35,"l":70,"b":35}) #el margen donde va a aparecer el mapa
+Grafico.update_layout(title="Densidad de terremotos (no importa la magnitud sino la cantidad)") #titulo
+Grafico.update_layout(title_font=dict(size=24, family="Arial", color="black")) #el font del titulo
+Grafico.show()
